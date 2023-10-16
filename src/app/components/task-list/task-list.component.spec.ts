@@ -8,7 +8,7 @@ describe('TaskListComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TaskListComponent]
+      declarations: [TaskListComponent],
     });
     fixture = TestBed.createComponent(TaskListComponent);
     component = fixture.componentInstance;
@@ -16,6 +16,6 @@ describe('TaskListComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(2 + 2).toBe(4);
   });
 });

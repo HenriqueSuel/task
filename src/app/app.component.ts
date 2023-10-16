@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-
-export interface IListTask {
-  title: string;
-  description: string;
-  date: Date;
-}
+import { Task } from 'src/models/task.model';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +7,25 @@ export interface IListTask {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  listTask: IListTask[] = [];
- // listTask: Array<IListTask> = [];
+  listTask: Task[] = [];
+  // listTask: Array<IListTask> = [];
+  selectedTask: Task | null = null;
 
 
+  ngOnInit() {
+    console.log(this.selectedTask)
+  }
 
-  onAddTask(task: IListTask) {
-    this.listTask.push(task)
+
+  onAddTask(task: Task) {
+    this.listTask.push(task);
+  }
+
+  handleTask(task: Task) {
+    this.selectedTask = task;
+  }
+
+  fecharDetalhes() {
+    this.selectedTask = null;
   }
 }

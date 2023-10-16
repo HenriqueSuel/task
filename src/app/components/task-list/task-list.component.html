@@ -1,11 +1,11 @@
 <div>
   <h2>Tarefas</h2>
   <ul *ngIf="isVisible">
-    <li
-      *ngFor="let task of tasks"
-    >
-      <div>
-        {{ task.title }} - {{ task.date }} - {{ task.description }}
+    <li *ngFor="let task of tasks">
+      <div (click)="selectedTask(task)">
+        {{ task.title }}
+        {{ "01/02/2020" | date : "dd/MM/yyyy" }} -
+        {{ task.description | uppercase | slice : 0 : 5 }}
       </div>
     </li>
   </ul>
