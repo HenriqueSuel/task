@@ -1,16 +1,21 @@
 <div>
   <h2>Tarefas</h2>
 
-  <app-task-filtro (onChangeFiltro)="handleFiltro($event)" ></app-task-filtro>
-  <ul *ngIf="isVisible">
-    <li *ngFor="let task of tasksFiltradas">
-      <div (click)="selectedTask(task)" appDateGreaterThanToday [Date]="task.date">
-        {{ task.title }}
-        {{ "01/02/2020" | date : "dd/MM/yyyy" }} -
-        {{ task.description | uppercase | slice : 0 : 5 }}
-      </div>
-    </li>
-  </ul>
+  <app-task-filtro (onChangeFiltro)="handleFiltro($event)"></app-task-filtro>
+
+  <div class="kanban-board">
+    <div class="column" *ngFor="let column of columns">
+      <h2>{{ column.name }}</h2>
+      <ng-container *ngFor="let item of tasksFiltradas">
+        <ng-container *ngIf="item.status === column.id">
+          <div class="card">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
 
   <button (click)="mostrarLista()">Mostrar Lista</button>
 </div>

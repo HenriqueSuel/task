@@ -4,7 +4,7 @@ import {
   EventEmitter,
   Input,
   Output,
-  OnInit
+  OnInit,
 } from '@angular/core';
 import { Task } from 'src/models/task.model';
 
@@ -16,15 +16,21 @@ import { Task } from 'src/models/task.model';
 export class TaskListComponent implements OnInit {
   isVisible = true;
 
+  columns = [
+    { name: 'To Do', id: 'toDo' },
+    { name: 'In Progress', id: 'trabalhando' },
+    { name: 'Done', id: 'finalizado' },
+  ];
+
   @Input() tasks: Task[] = [];
   @Output() handleTask = new EventEmitter();
 
   tasksFiltradas: Task[] = [];
 
-
   ngOnInit() {
     this.tasksFiltradas = this.tasks;
   }
+  
 
   mostrarLista() {
     this.isVisible = !this.isVisible;

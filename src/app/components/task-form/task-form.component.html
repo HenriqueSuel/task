@@ -1,10 +1,20 @@
 <div>
   <h2>Adicionar Nova Tarefa</h2>
 
-  <form (ngSubmit)="submitTask()">
+  <form (ngSubmit)="submitTask(form)" #form="ngForm">
     <div>
-      <input id="title" type="text" [(ngModel)]="newTask.title" name="title" />
       <label for="title">Titulo</label>
+      <input
+        id="title"
+        type="text"
+        [(ngModel)]="newTask.title"
+        name="title"
+        required
+        minlength="3"
+        #henrique="ngModel"
+      />
+
+      
     </div>
     <div>
       <label for="description">Descrição</label>
@@ -13,23 +23,40 @@
         type="text"
         [(ngModel)]="newTask.description"
         name="description"
+        required
       />
+
+      <!--  <div *ngIf="!form.controls['description']?.valid"></div> -->
+      <div *ngIf="form.controls['description'].invalid">
+        <h1>iNVALIDO</h1>
+      </div>
     </div>
     <div>
       <label for="date">Data de Vencimento</label>
-      <input id="date" type="date" [(ngModel)]="newTask.date" name="date" />
+      <input
+        id="date"
+        type="date"
+        [(ngModel)]="newTask.date"
+        name="date"
+        required
+        pattern="^\d{4}-\d{2}-\d{2}$"
+      />
+    </div>
+
+    <div *ngIf="form.controls['date'].invalid">
+      <h1>iNVALIDO</h1>
     </div>
 
     <div>
       <label for="status">Status</label>
-      <select name="status" id="status" [(ngModel)]="newTask.status">
+      <select name="status" id="status" [(ngModel)]="newTask.status" required>
         <option value="toDo">ToDo</option>
         <option value="trabalhando">Trabalhando</option>
         <option value="finalizado">Finalizado</option>
       </select>
     </div>
 
-    <button type="submit" class="btn btn-primary">sadadsa</button>
+    <button type="submit" class="btn btn-primary">Criar</button>
     <!--  <button type="submit">Adicionar Tarefas</button> -->
   </form>
 </div>
