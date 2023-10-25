@@ -14,7 +14,6 @@ import { Task } from 'src/models/task.model';
   styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent implements OnInit {
-  isVisible = true;
 
   columns = [
     { name: 'To Do', id: 'toDo' },
@@ -31,10 +30,6 @@ export class TaskListComponent implements OnInit {
     this.tasksFiltradas = this.tasks;
   }
   
-
-  mostrarLista() {
-    this.isVisible = !this.isVisible;
-  }
 
   selectedTask(task: Task) {
     this.handleTask.emit(task);
