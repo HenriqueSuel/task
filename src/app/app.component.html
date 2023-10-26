@@ -16,5 +16,9 @@
         (closeDetail)="fecharDetalhes()"
       ></app-task-detail>
     </div>
+
+    <div *ngFor="let items of toDoStatus">
+      {{items.title}}
+    </div>
   </div>
 </div>

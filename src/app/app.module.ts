@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DateGreaterThanTodayDirective } from './directives/date-greater-than-today.directive';
 import { TaskFiltroComponent } from './components/task-filtro/task-filtro.component';
 import { TaskFormReactiveComponent } from './components/task-form-reactive/task-form-reactive.component';
+import { DateMaskDirective } from './directives/date-mask.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { TaskFormReactiveComponent } from './components/task-form-reactive/task-
     TaskDetailComponent,
     DateGreaterThanTodayDirective,
     TaskFiltroComponent,
-    TaskFormReactiveComponent
+    TaskFormReactiveComponent,
+    DateMaskDirective
   ],
   imports: [
     BrowserModule,
